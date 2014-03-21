@@ -6,6 +6,17 @@
 {% block content %}
     <h1 style='text-align:center'>CPaste</h1>
     <div class='jumbotron' style='text-align:center'>
-      CPaste - Pure Pasting Awesomeness
+      <p>Paste:</p>
+      <form action='/paste' method='post'>
+      <input type='text' name='pname' class='form-control' placeholder='Paste Name...'/><br>
+      <textarea style='height:500px' name='pcontent' placeholder='Paste here...' class='form-control'></textarea>
+      <br>
+      <input type='submit' name='send' value='Paste' class='form-control' />
+      </form>
     </div>
+{% endblock %}
+{% block footer %}
+	<div id='footer'>
+		&copy; Copyright 2014 by <a href='//cydrobolt.com'>Cydrobolt</a>
+	</div>
 {% endblock %}

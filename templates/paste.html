@@ -1,0 +1,16 @@
+{% extends "basebs.html" %}
+{% block title %}Paste{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+    <h1 style='text-align:center'>CPaste</h1>
+    <div class='jumbotron' style='text-align:center'>
+      {% call(pcontent,pname) %}
+      <h2>Content</h2>
+      <p>{{ pcontent }}</p>
+      <hr>
+      <p>{{ pname }}</p>
+      {% endcall %}
+    </div>
+{% endblock %}

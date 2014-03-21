@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+	<link rel='stylesheet' href='main.css' />
+	<title>CPaste - {% block title %}{% endblock %}</title>
+	{% endblock %}
+</head>
+<body>
+	<div id='content'>{% block contet %}{% endblock %}</div>
+	<div id='footer'>
+		{% block footer %}
+		&copy; Copyright 2014 by <a href='//cydrobolt.com'>Cydrobolt</a>
+		{% endblock %}
+	</div>
+</body>

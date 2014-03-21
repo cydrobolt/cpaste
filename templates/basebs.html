@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	{% block head %}
+        <link rel="stylesheet" href="main.css"/>
+        <link rel="shortcut icon" href="favicon.ico">
+        <link href="//netdna.bootstrapcdn.com/bootswatch/3.1.1/flatly/bootstrap.min.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <link href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" rel="stylesheet">
+         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<title>CPaste - {% block title %}{% endblock %}</title>
+	{% endblock %}
+</head>
+<body>
+	<div id='container-fluid'>{% block content %}{% endblock %}</div>
+	<div id='footer'>
+		{% block footer %}
+		&copy; Copyright 2014 by <a href='//cydrobolt.com'>Cydrobolt</a>
+		{% endblock %}
+	</div>
+</body>

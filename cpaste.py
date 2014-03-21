@@ -19,9 +19,7 @@ def root():
 def paste():
 	pname = request.form['pname']
 	pcontent = request.form['pcontent']
-	return render_template('paste.html')
-
-
+	return render_template('paste.html', pname=request.form['pcontent'], pcontent=request.form['pcontent'])
 
 if __name__ == "__main__":
     app.run(debug=True)

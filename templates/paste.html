@@ -4,11 +4,15 @@
     {{ super() }}
 {% endblock %}
 {% block content %}
+<script src='../static/prism.js'></script>
+<div class='jumbotron'>
     <h1 style='text-align:center'>CPaste</h1>
-    <div class='jumbotron' style='text-align:center'>
-      <h2>Content</h2>
-      <p>{{ pcontent }}</p>
+</div>
+    <div style='text-align:center'>
+      <h2>Content</h2><br>
+      <b>{{ pname }}</b><br><br>
+  </div><div>
+      <pre><code class='language-{{ plang }}'>{{ pcontent }}</code></pre>
       <hr>
-      <p>{{ pname }}</p>
     </div>
 {% endblock %}

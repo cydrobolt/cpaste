@@ -1,6 +1,7 @@
-drop table if exists entries;
-create table entries (
+drop table if exists pastes;
+create table pastes (
   id integer primary key autoincrement,
   title text not null,
-  text text not null
+  paste text not null,
+  timestamp text not null,
 );

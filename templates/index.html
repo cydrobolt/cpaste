@@ -4,8 +4,8 @@
 		    {{ super() }}
 		{% endblock %}
 		{% block content %}
-		    <h1 style='text-align:center'>CPaste</h1>
-		    <div class='jumbotron' style='text-align:center'>
+		    <div class='jumbotron'><h1 style='text-align:center'>CPaste</h1>
+		    </div><div class='container-fluid' style='text-align:center'>
 		      <p>Paste:</p>
 		      <form action='/paste' method='post'>
 		      <input type='text' name='pname' class='form-control' placeholder='Paste Name...'/><br>
@@ -39,7 +39,7 @@
 		    </div>
 		{% endblock %}
 		{% block footer %}
-			<div id='footer'>
+			<div id='footer' style='padding-top:4%'>
 				&copy; Copyright 2014 by <a href='//cydrobolt.com'>Cydrobolt</a>
 			</div>
 		{% endblock %}

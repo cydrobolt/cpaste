@@ -33,7 +33,7 @@ def paste():
 	pname = request.form['pname']
 	pcontent = request.form['pcontent']
 	date = datetime.date()
-	pasteit = query_db("INSERT INTO pastes ('title','paste','timestamp') VALUES('pname','pcontent','date')"
+	pasteit = query_db("INSERT INTO pastes ('title','paste','timestamp') VALUES('%(pname)s','%(pcontent)s','%(date)s')" % locals())
 	return render_template('paste.html', pname=request.form['pname'], pcontent=request.form['pcontent'])
 
 if __name__ == "__main__":

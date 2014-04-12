@@ -1,0 +1,19 @@
+{% extends "basebs.html" %}
+{% block title %}404 Not Found{% endblock %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+{% block content %}
+<script src='../static/prism.js'></script>
+<div class='jumbotron'>
+    <h1 style='text-align:center'>CPaste Beta</h1>
+</div>
+    <div style='text-align:center'>
+      <h1>404 Not Found</h1><br><br>
+      <p class='text-muted'>Page not found: {{pagename}}</p><br>
+      <b>Sorry, but we weren't able to find the paste you are looking for. It might have been deleted. If you believe this happened in error, please contact us <a href="//cydrobolt.com/contact.html">here</a></b>
+      <br>
+      <h2><a href='/'>CPaste - Home</a></h2>
+  </div>
+    </div>
+{% endblock %}

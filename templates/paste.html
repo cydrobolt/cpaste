@@ -6,11 +6,10 @@
 {% block content %}
 <script src='../static/prism.js'></script>
 <div class='jumbotron'>
-    <h1 style='text-align:center'>CPaste</h1>
+    <h2 style='text-align:center;color:orange'><a href='/'>CPaste Beta</a></h2>
 </div>
     <div style='text-align:center'>
-      <h2>Content</h2><br>
-      <b>{{ pname }}</b><br><br>
+      <h2>{{pname}}</h2><br><p class='text-muted'>Created on {{pdate}}</p><br>
   </div><div>
       <pre><code class='language-{{ plang }}'>{{ pcontent }}</code></pre>
       <hr>

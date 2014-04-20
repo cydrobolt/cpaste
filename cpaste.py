@@ -3,6 +3,7 @@ import sqlite3
 import datetime
 from baseencode import base62_encode,base62_decode
 import pprint
+from htmlescape import htmlesc
 #Init Flask
 app = Flask(__name__)
  
@@ -32,13 +33,19 @@ def root():
 def showpaste(pastebv):
     dbco = get_db()
     g.pastebv = pastebv
-    decbase = base62_decode(pastebv)
-    findpaste = dbco.execute("SELECT `title`,`paste`,`timestamp` FROM pastes WHERE id=?", (decbase,))
+    decbase = pastebv
+    findpaste = dbco.execute("SELECT `title`,`paste`,`timestamp`,`lang` FROM pastes WHERE id=?", (decbase,))
     tpi = findpaste.fetchall()
     if(tpi==[]):
         return render_template('404.html',pagename=pastebv)
     else:
-        render_template('paste.html',pname=tpi[0],pcontent=tpi[1],pdate=tpi[2])
+        for row in tpi:
+            tpititle = row[0]
+            tpipaste = row[1]
+            tpitimestamp = row[2]
+            tpilang = row[3]
+
+        return render_template('paste.html',pname=tpititle,pcontent=tpipaste,pdate=tpitimestamp,plang=tpilang)
 
 
 @app.route("/paste", methods=['GET','POST'])
@@ -46,14 +53,25 @@ def paste():
     pname = request.form['pname']
     pcontent = request.form['pcontent']
     plang = request.form['codelang']
+    if (len(plang)<1)|(len(pcontent)<1)|(len(pname)<1):
+        return render_template('error.html',error="You may not leave fields empty. Go back and try again.")
+
     now = datetime.datetime.now()
     date = str(now.hour)+":"+str(now.minute)+":"+str(now.second)+", "+str(now.month)+"/"+str(now.day)+"/"+str(now.year)
-    ptuple = (pname,pcontent,date,)
     dbo = get_db()
-    pasteit = dbo.execute("INSERT INTO pastes ('title','paste','timestamp') VALUES(?,?,?);" , (ptuple))
-    dbo.commit()
     curride = dbo.execute("SELECT MAX(id) FROM pastes")
-    currid = int(curride.fetchone()[0])+1
+    dboq = curride.fetchall()
+    for row in dboq:
+        idresp = row[0]
+    if((idresp==None)|(idresp==0)):
+        currid = 1
+    else:
+        currid = int(idresp)+1
+
+    baseidi = base62_encode(currid)
+    ptuple = (pname,pcontent,date,plang,baseidi,)
+    pasteit = dbo.execute("INSERT INTO pastes ('title','paste','timestamp','lang','baseid') VALUES(?,?,?,?,?);" , (ptuple))
+    dbo.commit()
     purl = "/"+base62_encode(currid)
     return redirect(purl, code=302)
     #return render_template('paste.html', pname=request.form['pname'], pcontent=request.form['pcontent'],plang=request.form['codelang'])

@@ -1,1 +1,0 @@
-####To use CPASTE, you must move this folder to /static

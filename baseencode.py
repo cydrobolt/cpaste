@@ -4,7 +4,7 @@ BASE_LEN = len(BASE_ALPH)
 
 def base62_decode(string):
     tnum = 0
-    for char in string:
+    for char in str(string):
         tnum = tnum * BASE_LEN + BASE_DICT[char]
     return tnum
 
@@ -12,6 +12,8 @@ def base62_decode(string):
 def base62_encode(num):
     if not num:
         return BASE_ALPH[0]
+    if num<0:
+        return False
     num = int(num)
     encoding = ""
     while num:

@@ -4,4 +4,6 @@ create table pastes (
   title text not null,
   paste text not null,
   timestamp text not null,
+  lang text not null,
+  baseid text not null
 );
